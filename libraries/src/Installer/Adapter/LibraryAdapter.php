@@ -77,6 +77,7 @@ class LibraryAdapter extends InstallerAdapter
 	{
 		if ($this->parent->parseFiles($this->getManifest()->files, -1) === false)
 		{
+			// $this->element here is a string
 			throw new \RuntimeException(Text::sprintf('JLIB_INSTALLER_ABORT_LIB_COPY_FILES', $this->element));
 		}
 	}
