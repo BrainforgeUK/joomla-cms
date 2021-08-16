@@ -1371,7 +1371,7 @@ class Installer extends Adapter
 
 			/*
 			 * Before we can add a file to the copyfiles array we need to ensure
-			 * that the folder we are copying our file to exits and if it doesn't,
+			 * that the folder we are copying our file to exists and if it doesn't,
 			 * we need to create it.
 			 */
 
@@ -1709,6 +1709,12 @@ class Installer extends Adapter
 
 				if (!file_exists($filesource))
 				{
+					if ($filetype === 'folder')
+					{
+						// Can ignore empty folder in zip file
+						continue;
+					}
+
 					/*
 					 * The source file does not exist.  Nothing to copy so set an error
 					 * and return false.
